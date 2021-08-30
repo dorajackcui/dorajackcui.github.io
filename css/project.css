@@ -1,0 +1,163 @@
+:root {
+  --main-bg-color: #16181D;
+	--nav-color:#c5c0b2;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	background: var(--main-bg-color);
+	overflow: hidden;
+}
+
+.container-items {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.item {
+	position: relative;
+	flex-grow: 1;
+	font-family: "Mak";
+	font-size: 220px;
+	transition: all 300ms ease-in-out;
+}
+
+.item:hover {
+	flex-grow: 2;
+	font-size: 500px;
+}
+
+h6 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: var(--nav-color);
+}
+
+img {
+	width: 100%;
+}
+
+.container-img-wrap {
+	position: absolute;
+	top: -60rem;
+	left: -80px;
+	width: 900px;
+  height: 500px;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.container-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+  border:solid 5px #E0C9A6;
+  
+}
+
+.header__button {
+	z-index: 2;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--nav-color);
+	border: 0;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: -18px;
+	margin: 20px;
+	outline: none;
+	animation-duration: 300ms;
+	animation-timing-function: ease;
+}
+
+.header__button[data-open="true"] {
+	background-color: var(--main-bg-color);
+	animation-name: scale;
+}
+
+.header__button[data-open="false"] {
+	transition: background-color 250ms linear;
+}
+
+@keyframes scale {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(100%);
+	}
+}
+
+h1 {
+	font-size: 10rem;
+	font-weight: normal;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-transform: uppercase;
+}
+
+.header__nav {
+	background-color: var(--nav-color);
+	position: fixed;
+	overflow: hidden;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 40px 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	visibility: hidden;
+	clip-path: circle(var(--radius) at calc(100% - 55px) 47px);
+}
+
+.header__nav[data-active="true"] {
+	visibility: visible;
+}
+
+.header__menu {
+	padding: 0;
+	margin: 0;
+}
+
+.header__menu > .header__menu-item {
+	font-size: 12vh;
+}
+
+.header__menu > .header__menu-item:not(:last-of-type) {
+	margin-bottom: 0em;
+}
+
+.header__menu-item a {
+	letter-spacing: -4px;
+	font-weight: 300 !important;
+	color: #000;
+	text-decoration: none;
+}

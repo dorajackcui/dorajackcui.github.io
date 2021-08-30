@@ -1,9 +1,14 @@
+:root {
+  --main-bg-color: #16181D;
+	--nav-color:#c5c0b2;
+}
+
 body {
 	margin: 0;
 	padding: 40px 30px;
 	height: 100vh;
-	color: #fff;
-	background-color: #000;
+	color: var(--nav-color);
+	background-color: var(--main-bg-color);
 	font-family: "Trud Type", Helvetica, sans-serif;
 	font-size: 1rem;
 	line-height: 1.2;
@@ -42,7 +47,7 @@ header {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	background-color: #c6e421;
+	background-color: var(--nav-color);
 	border: 0;
 	cursor: pointer;
 	position: absolute;
@@ -55,7 +60,7 @@ header {
 }
 
 .header__button[data-open="true"] {
-	background-color: #000;
+	background-color: var(--main-bg-color);
 	animation-name: scale;
 }
 
@@ -84,7 +89,7 @@ h1 {
 }
 
 .header__nav {
-	background-color: #c6e421;
+	background-color: var(--nav-color);
 	position: fixed;
 	overflow: hidden;
 	z-index: 1;
