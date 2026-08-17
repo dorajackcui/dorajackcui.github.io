@@ -79,7 +79,7 @@
       setMetric(cards[2],'平台结算额',s.settlement,`已到账 ${yen(s.actual)} · 待结算 ${yen(s.pending)}`);
       setMetric(cards[3],s.hasInvoice?'当前净利润':'预计净利润',s.profit,'结算额 - 清扫 - 其他支出');
     }
-    document.querySelector('#salesFinancePanel')?.remove();
+    const legacy=document.querySelector('#salesFinancePanel');if(legacy)legacy.style.display='none';
     if(!document.querySelector('#settlementPrecisionPanel')){
       const content=document.querySelector('#content');const panel=document.createElement('section');panel.className='panel settlement-panel';panel.id='settlementPrecisionPanel';
       const varText=s.variance===0?'无差额':`${s.variance>0?'+':''}${yen(s.variance)}`;
