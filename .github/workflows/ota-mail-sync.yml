@@ -1,0 +1,30 @@
+name: OTA Mail Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install worker dependencies
+        run: npm install --prefix kobayashi-pms-mail-worker --no-audit --no-fund
+      - name: Sync OTA emails from iCloud
+        run: npm run --prefix kobayashi-pms-mail-worker sync
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ICLOUD_1_APP_PASSWORD: ${{ secrets.ICLOUD_1_APP_PASSWORD }}
+          ICLOUD_2_APP_PASSWORD: ${{ secrets.ICLOUD_2_APP_PASSWORD }}
+          ICLOUD_3_APP_PASSWORD: ${{ secrets.ICLOUD_3_APP_PASSWORD }}
+          ICLOUD_4_APP_PASSWORD: ${{ secrets.ICLOUD_4_APP_PASSWORD }}
+          ICLOUD_5_APP_PASSWORD: ${{ secrets.ICLOUD_5_APP_PASSWORD }}
