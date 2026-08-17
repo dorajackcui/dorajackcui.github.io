@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *'
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/ota-mail-sync.yml'
+      - 'kobayashi-pms-mail-worker/**'
 
 permissions:
   contents: read
