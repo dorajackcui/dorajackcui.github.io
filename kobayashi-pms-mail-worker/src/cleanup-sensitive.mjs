@@ -1,0 +1,10 @@
+import { createClient } from '@supabase/supabase-js';
+const URL='https://cxaoomvagqpuatlfthlx.supabase.co';
+const KEY=process.env.SUPABASE_SERVICE_ROLE_KEY;
+if(!KEY)throw new Error('SUPABASE_SERVICE_ROLE_KEY is missing');
+const sb=createClient(URL,KEY,{auth:{persistSession:false}});
+const {error:e1}=await sb.from('ota_email_messages').delete().eq('provider','Agoda').or('subject.ilike.%One-time PIN%,subject.ilike.%サインインリンク%,subject.ilike.%sign-in link%');
+if(e1)throw e1;
+const {error:e2}=await sb.from('ota_email_messages').delete().eq('provider','Booking.com').or('sender.ilike.%agoda%,sender.ilike.%paypal%');
+if(e2)throw e2;
+console.log('Sensitive authentication emails and known historical misclassifications removed.');
