@@ -66,7 +66,7 @@ let linked=0,created=0,waiting=0,cancelled=0;
 for(const group of groups.values()){
   const operational=group.filter(r=>!['ignored','unknown'].includes(r.message_type));
   if(!operational.length)continue;
-  const base=operational[0], orgId=base.organization_id,provider=base.provider,code=base.reservation_code;
+  const base=operational[0],orgId=base.organization_id,provider=base.provider,code=base.reservation_code;
   const externalListingId=first(operational,'external_listing_id');
   const unitId=await unitForListing(orgId,provider,externalListingId);
   const checkIn=first(operational,'check_in'),checkOut=first(operational,'check_out');
@@ -80,30 +80,36 @@ for(const group of groups.values()){
   if(!reservationId)reservation=await exactReservation(orgId,unitId,checkIn,checkOut);
   if(reservation)reservationId=reservation.id;
 
-  if(hasCancellation&&reservationId){
-    const {error:e}=await sb.from('reservations').update({status:'cancelled'}).eq('id',reservationId);if(e)throw e;
-    await markRows(operational,{reservation_id:reservationId,match_status:'matched',match_reason:'cancellation linked by OTA reservation code'});
-    cancelled++;continue;
+  if(hasCancellation){
+    if(reservationId){
+      const {error:e}=await sb.from('reservations').update({status:'cancelled'}).eq('id',reservationId);if(e)throw e;
+      await markRows(operational,{reservation_id:reservationId,match_status:'matched',match_reason:'cancellation linked by OTA reservation code'});
+      await writeFinance(operational,unitId,reservationId);
+      cancelled++;
+    }else{
+      await markRows(operational,{match_status:'ignored',match_reason:'cancelled OTA reservation was never created in PMS'});
+      await writeFinance(operational,unitId,null);
+    }
+    continue;
   }
 
   if(!reservationId&&hasReservationMail&&unitId&&checkIn&&checkOut){
     const occupancy=await exactIcal(orgId,unitId,checkIn,checkOut);
-    if(occupancy){
-      const status=checkOut<=todayTokyo()?'completed':'confirmed';
-      const {data,error:e}=await sb.from('reservations').insert({organization_id:orgId,unit_id:unitId,status,check_in:checkIn,check_out:checkOut,channel:provider,guest_name_snapshot:guest,gross_amount_yen:gross,platform_fee_yen:fee,local_note:`OTA邮件 + iCal 自动照合 · ${code}`}).select('id').single();
-      if(!e){reservationId=data.id;created++;}
-      else console.error(`create ${provider} ${code}: ${e.message}`);
-    }
+    const evidence=occupancy?'OTA邮件 + iCal 自动照合':'OTA邮件 + 已确认房源对应';
+    const status=checkOut<=todayTokyo()?'completed':'confirmed';
+    const {data,error:e}=await sb.from('reservations').insert({organization_id:orgId,unit_id:unitId,status,check_in:checkIn,check_out:checkOut,channel:provider,guest_name_snapshot:guest,gross_amount_yen:gross,platform_fee_yen:fee,local_note:`${evidence} · ${code}`}).select('id').single();
+    if(!e){reservationId=data.id;created++;}
+    else console.error(`create ${provider} ${code}: ${e.message}`);
   }
 
   if(reservationId){
-    await markRows(operational,{reservation_id:reservationId,match_status:'matched',match_reason:'consolidated by OTA reservation code + room/date evidence'});
+    await markRows(operational,{reservation_id:reservationId,match_status:'matched',match_reason:'consolidated by OTA reservation code + explicit room/date evidence'});
     await fillReservationFinancials(reservationId,gross,fee);
     await writeFinance(operational,unitId,reservationId);
     linked++;
   }else{
     const status=!unitId&&externalListingId?'needs_mapping':'unmatched';
-    const reason=!unitId&&externalListingId?`${provider} listing ${externalListingId} needs room mapping`:!checkIn||!checkOut?'waiting for complete stay dates from another OTA email':'no exact PMS/iCal match yet';
+    const reason=!unitId&&externalListingId?`${provider} listing ${externalListingId} needs room mapping`:!checkIn||!checkOut?'waiting for complete stay dates from another OTA email':'no exact PMS match yet';
     await markRows(operational,{match_status:status,match_reason:reason});
     await writeFinance(operational,unitId,null);
     waiting++;
