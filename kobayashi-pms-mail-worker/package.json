@@ -1,0 +1,13 @@
+{
+  "name": "kobayashi-pms-mail-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node src/index.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "imapflow": "^1.0.181",
+    "mailparser": "^3.7.4"
+  }
+}
