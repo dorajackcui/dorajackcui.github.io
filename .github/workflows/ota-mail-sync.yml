@@ -33,6 +33,10 @@ jobs:
           ICLOUD_3_APP_PASSWORD: ${{ secrets.ICLOUD_3_APP_PASSWORD }}
           ICLOUD_4_APP_PASSWORD: ${{ secrets.ICLOUD_4_APP_PASSWORD }}
           ICLOUD_5_APP_PASSWORD: ${{ secrets.ICLOUD_5_APP_PASSWORD }}
+      - name: Remove sensitive authentication emails
+        run: node kobayashi-pms-mail-worker/src/cleanup-sensitive.mjs
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY || secrets.SUPABASE_SERVICE_ROLE_KEY }}
       - name: Consolidate emails and match PMS reservations
         run: node kobayashi-pms-mail-worker/src/post-match.mjs
         env:
