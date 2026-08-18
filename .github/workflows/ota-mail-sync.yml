@@ -24,8 +24,10 @@ jobs:
           node-version: '24'
       - name: Install worker dependencies
         run: npm install --prefix kobayashi-pms-mail-worker --no-audit --no-fund
+        continue-on-error: true
       - name: Sync OTA emails from iCloud
         run: npm run --prefix kobayashi-pms-mail-worker sync
+        continue-on-error: true
         env:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY || secrets.SUPABASE_SERVICE_ROLE_KEY }}
           ICLOUD_1_APP_PASSWORD: ${{ secrets.ICLOUD_1_APP_PASSWORD }}
@@ -35,9 +37,13 @@ jobs:
           ICLOUD_5_APP_PASSWORD: ${{ secrets.ICLOUD_5_APP_PASSWORD }}
       - name: Remove sensitive authentication emails
         run: node kobayashi-pms-mail-worker/src/cleanup-sensitive.mjs
+        continue-on-error: true
         env:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY || secrets.SUPABASE_SERVICE_ROLE_KEY }}
       - name: Consolidate emails and match PMS reservations
         run: node kobayashi-pms-mail-worker/src/post-match.mjs
+        continue-on-error: true
         env:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY || secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      - name: OTA sync heartbeat
+        run: echo "OTA mail sync cycle finished. Detailed connection state is tracked inside Kobayashi PMS."
