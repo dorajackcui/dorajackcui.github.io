@@ -54,16 +54,18 @@
   async function applyOrders(c){
     if(document.querySelector('#pageTitle')?.textContent.trim()!=='订单')return;
     const table=document.querySelector('#content table.table');if(!table)return;
-    const ths=table.querySelectorAll('thead th');if(ths[5])ths[5].textContent='到账金额';
+    const ths=table.querySelectorAll('thead th');if(ths[5]&&ths[5].textContent!=='到账金额')ths[5].textContent='到账金额';
     const byId=new Map(c.all.map(x=>[x.reservation_id,x]));
-    table.querySelectorAll('tbody tr').forEach(tr=>{const b=tr.querySelector('[data-edit]');if(!b)return;const td=tr.children[5];if(td)td.innerHTML=settlementCell(byId.get(b.dataset.edit))});
+    table.querySelectorAll('tbody tr').forEach(tr=>{const b=tr.querySelector('[data-edit]');if(!b)return;const td=tr.children[5];if(!td)return;const html=settlementCell(byId.get(b.dataset.edit));if(td.innerHTML!==html)td.innerHTML=html});
   }
 
   function metricCards(){return [...document.querySelectorAll('#content .metric')]}
-  function setMetric(card,label,value,small){if(!card)return;const l=card.querySelector('label'),s=card.querySelector('strong'),sm=card.querySelector('small');if(l)l.textContent=label;if(s)s.textContent=yen(value);if(sm)sm.textContent=small||''}
+  function setMetric(card,label,value,small){if(!card)return;const l=card.querySelector('label'),s=card.querySelector('strong'),sm=card.querySelector('small'),v=yen(value);if(l&&l.textContent!==label)l.textContent=label;if(s&&s.textContent!==v)s.textContent=v;if(sm&&small!=null&&sm.textContent!==small)sm.textContent=small}
+  function ensureDashboardSalesGuard(){if(document.querySelector('#pageTitle')?.textContent.trim()!=='经营概览')return;if(document.querySelector('#salesFinancePanel'))return;const guard=document.createElement('i');guard.id='salesFinancePanel';guard.hidden=true;guard.setAttribute('aria-hidden','true');document.querySelector('#content')?.appendChild(guard)}
 
   async function applyDashboard(c){
     if(document.querySelector('#pageTitle')?.textContent.trim()!=='经营概览')return;
+    ensureDashboardSalesGuard();
     const s=summary(c),cards=metricCards();if(cards.length<4)return;
     setMetric(cards[0],'平台结算额',s.settlement,`已到账 ${yen(s.actual)} · 待结算 ${yen(s.pending)}`);
     setMetric(cards[1],s.hasInvoice?'实际清扫账单':'预计清扫费',s.hasInvoice?s.actualClean:s.expectedClean,s.hasInvoice?'已录入本月账单':'按退房日自动计入');
@@ -79,7 +81,7 @@
       setMetric(cards[2],'平台结算额',s.settlement,`已到账 ${yen(s.actual)} · 待结算 ${yen(s.pending)}`);
       setMetric(cards[3],s.hasInvoice?'当前净利润':'预计净利润',s.profit,'结算额 - 清扫 - 其他支出');
     }
-    const legacy=document.querySelector('#salesFinancePanel');if(legacy)legacy.style.display='none';
+    const legacy=document.querySelector('#salesFinancePanel');if(legacy&&legacy.style.display!=='none')legacy.style.display='none';
     if(!document.querySelector('#settlementPrecisionPanel')){
       const content=document.querySelector('#content');const panel=document.createElement('section');panel.className='panel settlement-panel';panel.id='settlementPrecisionPanel';
       const varText=s.variance===0?'无差额':`${s.variance>0?'+':''}${yen(s.variance)}`;
@@ -97,7 +99,8 @@
     const modal=document.querySelector('#resModal');if(!modal)return;
     let box=modal.querySelector('#settlementModalBox');if(!box){const actions=modal.querySelector('.form-actions');if(!actions)return;box=document.createElement('div');box.id='settlementModalBox';box.className='settlement-modal-box';actions.parentNode.insertBefore(box,actions)}
     const hit=modalMatch(c),gross=Number(String(modal.querySelector('#rGross')?.value||'').replace(/,/g,''))||0,fee=Number(String(modal.querySelector('#rFee')?.value||'').replace(/,/g,''))||0,expected=Math.max(0,gross-fee),actual=hit?.actual_payout_yen,status=actual!=null?'已到账':'预计到账',settle=actual!=null?actual:expected;
-    box.innerHTML=`<div class="settlement-modal-title">结算金额</div><div class="settlement-modal-grid"><div><span>订单总额</span><strong>${yen(gross)}</strong></div><div><span>平台手续费</span><strong>${yen(fee)}</strong></div><div><span>${status}</span><strong>${yen(settle)}</strong></div><div><span>调整差额</span><strong>${hit?.payout_variance_yen?`${hit.payout_variance_yen>0?'+':''}${yen(hit.payout_variance_yen)}`:'—'}</strong></div></div>`;
+    const html=`<div class="settlement-modal-title">结算金额</div><div class="settlement-modal-grid"><div><span>订单总额</span><strong>${yen(gross)}</strong></div><div><span>平台手续费</span><strong>${yen(fee)}</strong></div><div><span>${status}</span><strong>${yen(settle)}</strong></div><div><span>调整差额</span><strong>${hit?.payout_variance_yen?`${hit.payout_variance_yen>0?'+':''}${yen(hit.payout_variance_yen)}`:'—'}</strong></div></div>`;
+    if(box.innerHTML!==html)box.innerHTML=html;
     ['#rGross','#rFee','#rGuest','#rIn','#rOut','#rChannel'].forEach(sel=>{const el=modal.querySelector(sel);if(el&&!el.dataset.settlementBound){el.dataset.settlementBound='1';el.addEventListener('input',()=>applyModal(c));el.addEventListener('change',()=>applyModal(c))}})
   }
 
