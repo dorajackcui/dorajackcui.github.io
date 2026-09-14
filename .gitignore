@@ -1,1 +1,5 @@
-*.png
+node_modules/
+.DS_Store
+.preview/
+*.tmp.html
+*.log
