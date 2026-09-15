@@ -46,8 +46,10 @@ for (const { cssVariable, value } of Object.values(tokens.tokens)) {
 }
 const reference = await readFile(resolve(root, 'reference.html'), 'utf8');
 const guide = await readFile(resolve(root, 'design-reference/REFERENCE.md'), 'utf8');
-const handoff = guide.split('\n').find(line => line.startsWith('> 请按')).slice(2);
-assert(reference.includes(handoff), 'Reference handoff is out of sync with the guide');
+const handoffSection = guide.split('## 9. 给其他项目的使用提示')[1].split('\n## ')[0];
+const handoff = handoffSection.split(/\r?\n/).filter(line => line.startsWith('>')).map(line => line.replace(/^> ?/, '')).join('\n');
+const previewPrompt = reference.match(/<textarea\b[^>]*id="handoff-prompt"[^>]*>([\s\S]*?)<\/textarea>/)?.[1].replace(/\r\n/g, '\n');
+assert.equal(previewPrompt, handoff, 'Reference handoff is out of sync with the guide');
 
 for (const file of ['main.js', 'reference.js', 'scripts/serve.mjs', 'scripts/check.mjs']) {
   const result = spawnSync(process.execPath, ['--check', resolve(root, file)], { encoding: 'utf8' });

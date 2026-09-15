@@ -25,14 +25,17 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .display { font-size: clamp(36px, 5vw, 64px); font-weight: 650; letter-spacing: -.025em; line-height: 1.12; }
 .app-title { font-size: 28px; line-height: 1.3; font-weight: 600; }
 .body-sample { font-size: 15px; line-height: 1.7; }
+.type-caption { margin-top: 8px; }
 .spacing { display: flex; flex-wrap: wrap; align-items: end; gap: 24px; }
 .step { display: grid; gap: 12px; justify-items: start; }
 .bar { width: var(--size); height: 8px; background: var(--y-color-text); }
 .examples { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.section-rule { max-width: 690px; margin-bottom: 28px; font-size: 15px; line-height: 1.8; }
 h3 { font-size: 16px; line-height: 1.5; font-weight: 600; margin-bottom: 16px; }
 .showcase { background: var(--y-color-surface); border-radius: 6px; padding: 32px; min-height: 214px; }
 .showcase .showcase-title { color: var(--y-color-text); font-size: 28px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; margin-bottom: 20px; }
 .showcase p { font-size: 14px; line-height: 1.7; color: var(--y-color-text-secondary); }
+.showcase > .y-link { display: inline-block; margin-top: 24px; font-size: 13px; }
 .example-note { margin-top: 16px; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
 th, td { padding: 10px 12px; border-bottom: 1px solid var(--y-color-divider); }
@@ -47,18 +50,17 @@ td:last-child, th:last-child { text-align: right; font-variant-numeric: tabular-
 .artwork img { width: 100%; height: auto; display: block; border-radius: 8px; }
 .artwork figcaption { margin-top: 12px; font-size: 13px; }
 footer { padding: 0 0 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+.resource-links { display: flex; flex-wrap: wrap; gap: 16px 24px; }
 .skip-link { position: absolute; top: -80px; left: 24px; padding: 12px; background: white; }
 .skip-link:focus { top: 12px; }
 .wordmark:focus-visible, summary:focus-visible { outline: 2px solid var(--y-color-focus); outline-offset: 5px; }
 h2 { scroll-margin-top: 32px; }
 .section-nav { display: flex; flex-wrap: wrap; gap: 16px 28px; padding-bottom: 24px; font-size: 13px; }
 .artwork-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.gallery-note { margin-bottom: 24px; }
 .usage-steps { margin: 0 0 28px; padding-left: 20px; font-size: 14px; line-height: 1.9; }
 .handoff { border-top: 1px solid var(--y-color-divider); padding-top: 20px; }
 .handoff summary { width: fit-content; cursor: pointer; font-size: 14px; }
-.handoff label { display: block; margin: 20px 0 12px; }
-.handoff textarea { display: block; width: 100%; min-height: 200px; resize: vertical; margin-bottom: 16px; font-size: 14px; line-height: 1.8; }
+.handoff textarea { display: block; width: 100%; min-height: 260px; field-sizing: content; resize: vertical; margin: 20px 0 16px; padding: 16px; font-size: 14px; line-height: 1.8; }
 @media (max-width: 700px) {
   .sheet { width: calc(100% - 44px); }
   header { height: 76px; }

@@ -41,10 +41,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #2383e2; outline-offs
 .section-heading > span { font-size: 12px; color: #92928a; letter-spacing: .5px; }
 .project { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.35fr); gap: 66px; align-items: center; padding: 62px 0; border-bottom: 1px solid var(--line); }
 .project:last-child { border-bottom: 0; }
-.project-type { color: var(--secondary); font-size: 11px; letter-spacing: 1.2px; margin: 0 0 18px; }
-.project h3 { font-size: 36px; line-height: 1.2; letter-spacing: -.02em; font-weight: 600; margin: 0 0 19px; }
-.project-description { color: #707068; font-size: 15px; line-height: 1.9; margin: 0 0 20px; max-width: 325px; }
-.project-platform { font-size: 12px; color: #85857c; margin: 0 0 31px; }
+.project h3 { font-size: 36px; line-height: 1.2; letter-spacing: -.02em; font-weight: 600; margin: 0 0 16px; }
+.project-description { color: #707068; font-size: 15px; line-height: 1.9; margin: 0 0 28px; max-width: 325px; }
 .project-link { display: inline-flex; align-items: center; gap: 17px; font-size: 14px; font-weight: 500; padding-bottom: 5px; border-bottom: 1px solid #b6b6ac; }
 .project-link:hover { border-color: var(--ink); }
 .project-link > span:last-child { color: #79796e; }
@@ -74,10 +72,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #2383e2; outline-offs
   .section-heading h2 { font-size: 18px; }
   .section-heading > span { font-size: 11px; }
   .project { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
-  .project-type { font-size: 10px; margin-bottom: 14px; }
   .project h3 { font-size: 31px; margin-bottom: 15px; }
-  .project-description { font-size: 14px; line-height: 1.9; max-width: 400px; margin-bottom: 13px; }
-  .project-platform { font-size: 11px; margin-bottom: 21px; }
+  .project-description { font-size: 14px; line-height: 1.9; max-width: 400px; margin-bottom: 22px; }
   .project-link { font-size: 13px; }
   .project-preview, .project-preview > img { border-radius: 6px; }
   .site-footer { font-size: 10px; padding: 24px 0; margin-top: 0; gap: 15px; }

@@ -20,10 +20,10 @@
       <div class="intro">
         <h1>通用视觉参考</h1>
         <p>配色、排版、间距与控件细节。<br>布局和密度，随产品的任务而变。</p>
-        <nav class="downloads" aria-label="参考文件"><a class="y-link" data-online-only href="YIZHI-design-reference.zip" download>下载完整参考包</a><a class="y-link" href="design-reference/REFERENCE.md" download>完整规范 .md</a><a class="y-link" href="design-reference/tokens.css" download>样式变量 .css</a><a class="y-link" href="design-reference/tokens.json" download>跨平台映射 .json</a></nav>
+        <nav class="downloads" aria-label="参考文件"><a class="y-link" data-online-only href="YIZHI-design-reference.zip" download>下载完整参考包</a><a class="y-link" href="design-reference/REFERENCE.md" download>下载完整规范</a></nav>
       </div>
       <nav class="section-nav" aria-label="参考目录">
-        <a class="y-link" href="#palette-title">配色</a><a class="y-link" href="#type-title">排版</a><a class="y-link" href="#spacing-title">间距</a><a class="y-link" href="#density-title">密度</a><a class="y-link" href="#controls-title">控件</a><a class="y-link" href="#artwork-title">插画</a><a class="y-link" href="#usage-title">使用</a>
+        <a class="y-link" href="#palette-title">配色</a><a class="y-link" href="#type-title">排版</a><a class="y-link" href="#spacing-title">间距</a><a class="y-link" href="#density-title">层级</a><a class="y-link" href="#controls-title">控件</a><a class="y-link" href="#artwork-title">插画</a><a class="y-link" href="#usage-title">使用</a>
       </nav>
       <section aria-labelledby="palette-title">
         <div class="section-head"><h2 id="palette-title">01 / 配色</h2><span>中性色为底，橙色点睛</span></div>
@@ -42,10 +42,11 @@
       </section>
       <section aria-labelledby="type-title">
         <div class="section-head"><h2 id="type-title">02 / 排版</h2><span>Inter · 中文系统黑体</span></div>
-        <div class="type-row"><div class="type-label">展示标题<br>650 / 1.12 / −0.025em</div><p class="display">Small tools.<br>A wider world.</p></div>
-        <div class="type-row"><div class="type-label">应用标题<br>28px / 600 / 1.3</div><p class="app-title">项目与文件</p></div>
-        <div class="type-row"><div class="type-label">正文<br>15px / 400 / 1.7</div><p class="body-sample">翻译、本地化与日常工具。<br>Tools for translation and everyday work.</p></div>
-        <div class="type-row"><div class="type-label">辅助信息<br>13px / 400 / 1.7</div><p class="note">支持 Excel / CSV · 本地处理</p></div>
+        <div class="type-samples">
+          <div class="type-row"><div class="type-label">展示标题<br>650 / 1.12 / −0.025em</div><p class="display">Small tools.<br>A wider world.</p></div>
+          <div class="type-row"><div class="type-label">应用标题<br>28px / 600 / 1.3</div><p class="app-title">项目与文件</p></div>
+          <div class="type-row"><div class="type-label">正文与辅助信息<br>15px / 13px · 400 / 1.7</div><div><p class="body-sample">翻译、本地化与日常工具。<br>Tools for translation and everyday work.</p><p class="note type-caption">支持 Excel / CSV · 本地处理</p></div></div>
+        </div>
         <p class="note section-note">英文大标题轻微收紧；中文、正文与数据保持正常字距。目标产品可保留合适的既有字体。</p>
       </section>
       <section aria-labelledby="spacing-title">
@@ -64,10 +65,11 @@
         <p class="note section-note">控件间 8–12，面板内 16–24，内容组间 24–32。展示页的大区块可用 48–80。</p>
       </section>
       <section aria-labelledby="density-title">
-        <div class="section-head"><h2 id="density-title">04 / 密度</h2><span>同一视觉基础，不同内容关系</span></div>
+        <div class="section-head"><h2 id="density-title">04 / 信息层级</h2><span>一个主题，最多三个主要元素</span></div>
+        <p class="section-rule">每个 section 只讲一件事，同一区域最多放 3 个主要元素，例如「标题、说明、操作」。多出来的内容，先删重复、合并说明，再按用途拆分。</p>
         <div class="examples">
-          <div><h3>展示页</h3><div class="showcase"><p class="showcase-title">Tool Hub<span class="y-brand-dot" aria-hidden="true">.</span></p><p>标签检查与文本比较。</p></div><p class="note example-note">宽松区块，简短说明。内容已可见时，省去重复的跳转入口。</p></div>
-          <div><h3>工作界面 · 密度示意</h3><table><thead><tr><th scope="col">文件</th><th scope="col">状态</th><th scope="col">条目</th></tr></thead><tbody><tr><td>界面文案.xlsx</td><td>已检查</td><td>128</td></tr><tr><td>术语表.csv</td><td>待检查</td><td>64</td></tr><tr><td>帮助文档.xlsx</td><td>已检查</td><td>256</td></tr></tbody></table><p class="note example-note">行列对齐，保留数据密度。编辑器、表格和侧栏按任务组织。</p></div>
+          <div><h3>展示页</h3><div class="showcase"><p class="showcase-title">Tool Hub<span class="y-brand-dot" aria-hidden="true">.</span></p><p>在浏览器本地检查标签、比较文本。</p><a class="y-link" href="https://momotools.dorajackcui.workers.dev/" target="_blank" rel="noopener noreferrer">查看项目 <span aria-hidden="true">↗</span></a></div><p class="note example-note">标题、一句说明、一个入口。序号省去，应用类型并入说明。</p></div>
+          <div><h3>工作界面</h3><table><thead><tr><th scope="col">文件</th><th scope="col">状态</th><th scope="col">条目</th></tr></thead><tbody><tr><td>界面文案.xlsx</td><td>已检查</td><td>128</td></tr><tr><td>术语表.csv</td><td>待检查</td><td>64</td></tr><tr><td>帮助文档.xlsx</td><td>已检查</td><td>256</td></tr></tbody></table><p class="note example-note">同类数据集中呈现，保留必要字段和状态。三元素原则不限制数据行数。</p></div>
         </div>
       </section>
       <section aria-labelledby="controls-title">
@@ -80,8 +82,7 @@
         <p class="note section-note" id="demo-help">可输入，重置恢复样例。用 Tab 检查焦点；边框和点击区域保持清楚。</p>
       </section>
       <section aria-labelledby="artwork-title">
-        <div class="section-head"><h2 id="artwork-title">06 / 产品插画</h2><span>统一材质，色彩随主题变化</span></div>
-        <p class="note gallery-note">图内不放标题或说明。统一材质和比例，颜色随产品主题变化。</p>
+        <div class="section-head"><h2 id="artwork-title">06 / 产品插画</h2><span>统一材质与比例，图内不放文字</span></div>
         <div class="artwork-grid">
         <figure class="artwork"><img src="assets/previews/momocat-artwork.jpg" width="1536" height="1024" alt="momoCAT 概念插画：双语文档与连接丝带" loading="lazy"><figcaption><a class="y-link" href="assets/previews/momocat-artwork.jpg" download>momoCAT · 图片</a></figcaption></figure>
         <figure class="artwork"><img src="assets/previews/qatools-artwork.jpg" width="1536" height="1024" alt="QAtools 概念插画：放大镜与校对清单" loading="lazy"><figcaption><a class="y-link" href="assets/previews/qatools-artwork.jpg" download>QAtools · 图片</a></figcaption></figure>
@@ -90,16 +91,21 @@
         <p class="note section-note"><a class="y-link" href="design-reference/IMAGE-PROMPTS.md" download>下载插画生成提示</a></p>
       </section>
       <section aria-labelledby="usage-title">
-        <div class="section-head"><h2 id="usage-title">07 / 使用</h2><span>视觉统一，结构适配任务</span></div>
-        <ol class="usage-steps"><li>保留产品名称、功能和主要工作流程。</li><li>先在一个代表性页面应用配色、排版和控件细节。</li><li>检查中文、英文、小屏与操作状态，再扩展到其他页面。</li></ol>
-        <details class="handoff"><summary>给其他项目的使用提示</summary>
-          <label class="note" for="handoff-prompt">附上完整规范，再复制这段提示。</label>
-          <textarea id="handoff-prompt" class="y-input" readonly>请按所附《YIZHI · 通用视觉参考》调整当前产品的视觉。使用白色背景、深灰文字、浅灰辅助表面、Inter 或合适的系统无衬线字体、克制的线条和清晰的间距关系。英文大标题使用适中的字重与轻微负字距，中文和正文保持正常字距。YIZHI. 与展示用产品名的末尾句点使用暖橙 #D97757，作为少量品牌强调色。保留当前产品名称、功能、信息架构、页面类型和主要操作流程，根据真实任务选择密度。Landing page 保持 landing page，编辑器和表格工具保持工作界面。跳转优先轻量文字链接，内容已可见时省去重复入口；执行操作保留明确的按钮语义。需要产品配图时，可用统一材质、无文字的彩色插画，不凭空添加功能。不要自动添加侧栏、数据库视图、卡片网格、项目弹窗、宣传口号或大段介绍。不要复制 Notion 的产品界面。保留必要状态、可读性与键盘反馈。先在一个代表性页面落实，再扩展到其他页面。参考中的应用尺寸是起点，可按平台和任务调整。</textarea>
-          <div class="actions"><button type="button" class="y-button" id="copy-prompt">复制提示</button><span class="note" id="copy-status" role="status"></span></div>
+        <div class="section-head"><h2 id="usage-title">07 / 使用</h2><span>先做一页，再扩展</span></div>
+        <ol class="usage-steps"><li>保留原有功能和主要流程。</li><li>先调整一个代表页面，统一视觉并减少同一区域的元素。</li><li>检查中英文、小屏与操作反馈，再扩展到其他页面。</li></ol>
+        <details class="handoff"><summary id="handoff-summary">给其他项目的使用提示</summary>
+          <textarea id="handoff-prompt" class="y-input" aria-labelledby="handoff-summary" aria-describedby="handoff-help" rows="13" readonly>请参考所附《YIZHI · 通用视觉参考》调整当前项目：
+
+1. 调整范围：保留原有产品名称、功能和主要流程，布局与密度按实际任务安排。
+
+2. 视觉与层级：使用白底、深灰文字、浅灰辅助区、无衬线字体和清晰的间距，品牌句点用暖橙色 #D97757。每个 section 只讲一件事，同一区域最多放 3 个主要元素，例如标题、说明、操作。多余内容先删重复、合并说明，再按用途拆分。
+
+3. 交互与验证：跳转用链接，操作用按钮，保留必要状态与键盘焦点。先调整一个代表页面，检查中英文、小屏和操作反馈，再扩展到其他页面。</textarea>
+          <div class="actions"><button type="button" class="y-button" id="copy-prompt">复制提示</button><span class="note" id="handoff-help">使用时附上完整规范。</span><span class="note" id="copy-status" role="status"></span></div>
         </details>
       </section>
     </main>
-    <footer class="note"><span>YIZHI. / 1.1 / 2026–09–15</span><a class="y-link" href="design-reference/REFERENCE.md" download>完整规则与迁移提示</a></footer>
+    <footer class="note"><span>YIZHI. / 1.1 / 2026–09–15</span><nav class="resource-links" aria-label="样式资源"><a class="y-link" href="design-reference/tokens.css" download>样式变量 .css</a><a class="y-link" href="design-reference/tokens.json" download>跨平台映射 .json</a></nav></footer>
   </div>
 </body>
 </html>
