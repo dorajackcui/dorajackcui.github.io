@@ -7,8 +7,7 @@
     "dev": "node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs",
     "check": "node scripts/check.mjs",
-    "assets:fetch": "node scripts/fetch-assets.mjs",
-    "assets:globe": "node scripts/build-globe.mjs"
+    "reference:pack": "python3 scripts/package-reference.py"
   },
   "engines": { "node": ">=22" }
 }

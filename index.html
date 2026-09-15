@@ -1,104 +1,72 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0d0c" />
-  <meta name="description" content="Zhiyang Cui 的个人开发作品集。探索 momoCAT、QAtools 与 Tool Hub：让翻译、本地化与日常工作更顺手的工具。" />
-  <meta property="og:title" content="Zhiyang Cui — Small tools. A wider world." />
-  <meta property="og:description" content="Tools for translation, localization, and the work in between. Explore momoCAT, QAtools, and Tool Hub." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dorajackcui.github.io/" />
-  <title>Zhiyang Cui — 开发者 / 本地化工具</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="assets/fonts/space-grotesk-regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/home.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="YIZHI — momoCAT、QAtools 和 Tool Hub。翻译、本地化与日常工具。">
+  <title>YIZHI — Small tools. A wider world.</title>
+  <link rel="canonical" href="https://dorajackcui.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/home.css">
   <script type="module" src="main.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main" data-zh="跳到正文" data-en="Skip to content">跳到正文</a>
-  <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Zhiyang Cui — Home"><span class="brand-symbol" aria-hidden="true">✳</span><span>ZHIYANG CUI<span class="accent">.</span></span></a>
-    <nav aria-label="主导航" data-zh-label="主导航" data-en-label="Main navigation">
-      <a class="nav-work" href="#work"><span class="nav-dot"></span><span data-zh="项目" data-en="Work">项目</span></a>
-      <a href="#about" data-zh="关于" data-en="About">关于</a>
-      <a class="github-nav" href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+<body id="top">
+  <a class="skip-link" href="#projects" data-zh="跳到项目" data-en="Skip to projects">跳到项目</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="#top" aria-label="YIZHI 首页">YIZHI<span aria-hidden="true">.</span></a>
+    <nav aria-label="主导航">
+      <a href="#projects" data-zh="项目" data-en="Projects">项目</a>
+      <a href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <button id="language-toggle" class="language-button" aria-label="Switch to English">EN</button>
     </nav>
-    <div class="header-controls"><button class="motion-button" id="motion-toggle" aria-pressed="false" aria-label="暂停地球动画" title="暂停地球动画"><span aria-hidden="true" id="motion-icon">Ⅱ</span></button><span class="control-divider" aria-hidden="true"></span><button class="language-button" id="language-toggle" aria-label="Switch to English">EN <span aria-hidden="true">↔</span></button></div>
   </header>
-  <div class="globe-stage" id="globe-stage" aria-hidden="true">
-    <div class="globe-viewport" id="globe-viewport">
-      <div class="globe-fallback"><div class="fallback-sphere"><i></i><i></i><i></i></div></div><canvas id="globe-canvas"></canvas>
-      <div class="orbit-label label-one">Hello<span class="label-code">en</span></div><div class="orbit-label label-two">你好<span class="label-code">zh</span></div><div class="orbit-label label-three">Bonjour<span class="label-code">fr</span></div><div class="orbit-label label-four">こんにちは<span class="label-code">ja</span></div>
-      <div class="globe-cross cross-top">+</div><div class="globe-cross cross-bottom">+</div>
-    </div>
-    <div class="globe-caption"><span class="signal-dot"></span><span>ONE WORLD. MANY LANGUAGES.</span></div>
-  </div>
-  <main id="main">
-    <section class="hero section-shell" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="signal-dot"></span> DEVELOPER &nbsp; / &nbsp; LOCALIZATION</p>
-        <h1 id="hero-title">Small tools.<br />A wider<br /><span class="accent">world.</span></h1>
-        <p class="hero-description" data-zh="写代码，连接语言。\n为翻译、本地化和日常工作，做一些顺手的工具。" data-en="A little code. A little less friction.\nBuilding useful tools for a multilingual world.">写代码，连接语言。<br />为翻译、本地化和日常工作，做一些顺手的工具。</p>
-        <a class="primary-link" href="#work"><span data-zh="探索我的项目" data-en="Explore my work">探索我的项目</span><span class="arrow" aria-hidden="true">↘</span></a>
-        <div class="hero-signature"><span class="signature-line"></span><span>Zhiyang Cui</span><span class="muted">/ dorajackcui</span></div>
-      </div>
-      <div class="hero-bottom"><a class="scroll-cue" href="#work"><span class="scroll-icon" aria-hidden="true">↓</span><span>SCROLL TO EXPLORE</span></a><span class="hero-index">3 PROJECTS <span>/</span> ONE CONNECTED WORKFLOW</span><span class="edition">PORTFOLIO — 2026</span></div>
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Small tools.<br>A wider world.</h1>
+      <p data-zh="翻译、本地化与日常工具。" data-en="Tools for translation, localization, and everyday work.">翻译、本地化与日常工具。</p>
     </section>
-    <section id="work" class="work section-shell" aria-labelledby="work-title">
-      <div class="section-heading"><h2 id="work-title"><span class="eyebrow-index">01 /</span><span data-zh="精选项目" data-en="Selected work">精选项目</span><sup>03</sup></h2><span class="mono" data-zh="从实际工作中的小问题开始。" data-en="Built from everyday friction.">从实际工作中的小问题开始。</span></div>
-      <article class="project" id="momocat" data-project="0" aria-labelledby="momocat-title">
-        <div class="project-waypoint" aria-hidden="true"><span>01 — TRANSLATE</span><span class="waypoint-line"></span></div>
-        <div class="project-content">
-          <div class="project-kicker"><span class="project-number">01 / 03</span><span>TRANSLATION WORKSPACE</span></div>
-          <a class="project-preview" href="https://momocat-yizhi.pages.dev/" target="_blank" rel="noopener noreferrer" aria-label="打开 momoCAT 项目网站" data-zh-label="打开 momoCAT 项目网站" data-en-label="Open the momoCAT project website">
-            <div class="browser-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>momocat-yizhi.pages.dev</span><span aria-hidden="true">↗</span></div>
-            <img src="assets/previews/momocat.webp" width="1265" height="712" alt="momoCAT 网站预览：CAT 功能齐全，AI 不再盲翻" loading="lazy" decoding="async" />
-            <span class="preview-hover" data-zh="打开项目 ↗" data-en="Open project ↗">打开项目 ↗</span>
-          </a>
-          <div class="project-title-row"><h3 id="momocat-title">momoCAT<span class="accent">.</span></h3><span class="project-type" data-zh="桌面工具" data-en="DESKTOP APP">桌面工具</span></div>
-          <p class="project-description" data-zh="让 AI 理解翻译的上下文。将 CAT 编辑、翻译记忆库、术语库与 AI 翻译放进同一个工作站，从初翻到审校，一路衔接。" data-en="Give AI the context it needs. A translation workspace that brings CAT editing, translation memories, terminology, and AI together, from first draft to final review.">让 AI 理解翻译的上下文。将 CAT 编辑、翻译记忆库、术语库与 AI 翻译放进同一个工作站，从初翻到审校，一路衔接。</p>
-          <ul class="project-tags"><li>CAT Editor</li><li>Context-aware AI</li><li>TM / TB</li></ul>
-          <a class="text-link" href="https://momocat-yizhi.pages.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="查看项目" data-en="Visit project">查看项目</span><span aria-hidden="true">↗</span></a>
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <div class="section-heading"><h2 id="projects-title" data-zh="项目" data-en="Projects">项目</h2><span>01 — 03</span></div>
+      <article class="project" id="momocat" aria-labelledby="momocat-title">
+        <div class="project-copy">
+          <p class="project-type" data-zh="01 / 翻译" data-en="01 / TRANSLATION">01 / 翻译</p>
+          <h3 id="momocat-title">momoCAT<span class="brand-dot" aria-hidden="true">.</span></h3>
+          <p class="project-description" data-zh="CAT 编辑、翻译记忆库、术语库与 AI 翻译，集中在一个工作站。" data-en="CAT editing, translation memories, terminology, and AI translation in one workspace.">CAT 编辑、翻译记忆库、术语库与 AI 翻译，集中在一个工作站。</p>
+          <p class="project-platform" data-zh="桌面应用" data-en="Desktop app">桌面应用</p>
+          <a class="project-link" href="https://momocat-yizhi.pages.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="查看 momoCAT" data-en="Explore momoCAT">查看 momoCAT</span><span aria-hidden="true">↗</span></a>
         </div>
+        <a class="project-preview" href="https://momocat-yizhi.pages.dev/" target="_blank" rel="noopener noreferrer" data-zh-label="打开 momoCAT 项目网站" data-en-label="Open the momoCAT project website" aria-label="打开 momoCAT 项目网站">
+          <img src="assets/previews/momocat-artwork.jpg" width="1536" height="1024" alt="momoCAT 概念插画：双语文档由橙色丝带连接" data-zh-alt="momoCAT 概念插画：双语文档由橙色丝带连接" data-en-alt="momoCAT concept illustration: paired documents joined by a coral ribbon" decoding="async">
+        </a>
       </article>
-      <article class="project" id="qatools" data-project="1" aria-labelledby="qatools-title">
-        <div class="project-waypoint" aria-hidden="true"><span>02 — REFINE</span><span class="waypoint-line"></span></div>
-        <div class="project-content">
-          <div class="project-kicker"><span class="project-number">02 / 03</span><span>QUALITY & AUTOMATION</span></div>
-          <a class="project-preview" href="https://momoqatools.pages.dev/" target="_blank" rel="noopener noreferrer" aria-label="打开 QAtools 使用指南" data-zh-label="打开 QAtools 使用指南" data-en-label="Open the QAtools handbook">
-            <div class="browser-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>momoqatools.pages.dev</span><span aria-hidden="true">↗</span></div>
-            <img src="assets/previews/qatools.webp" width="1265" height="712" alt="QAtools 使用手册预览：本地化质量检查与表格处理" loading="lazy" decoding="async" />
-            <span class="preview-hover" data-zh="打开项目 ↗" data-en="Open project ↗">打开项目 ↗</span>
-          </a>
-          <div class="project-title-row"><h3 id="qatools-title">QAtools<span class="accent">.</span></h3><span class="project-type" data-zh="桌面工具" data-en="DESKTOP APP">桌面工具</span></div>
-          <p class="project-description" data-zh="把重复的检查交给工具。覆盖术语、占位符与译文一致性检查，串起表格整理、内容同步和修订回填，让交付更从容。" data-en="Let the tools handle the repetition. Check terminology, placeholders, and translation consistency, then move through spreadsheet processing, content sync, and revision workflows.">把重复的检查交给工具。覆盖术语、占位符与译文一致性检查，串起表格整理、内容同步和修订回填，让交付更从容。</p>
-          <ul class="project-tags"><li>Localization QA</li><li>Excel workflows</li><li>Batch processing</li></ul>
-          <a class="text-link" href="https://momoqatools.pages.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="查看项目" data-en="Visit project">查看项目</span><span aria-hidden="true">↗</span></a>
+      <article class="project" id="qatools" aria-labelledby="qatools-title">
+        <div class="project-copy">
+          <p class="project-type" data-zh="02 / 质量检查" data-en="02 / QUALITY ASSURANCE">02 / 质量检查</p>
+          <h3 id="qatools-title">QAtools<span class="brand-dot" aria-hidden="true">.</span></h3>
+          <p class="project-description" data-zh="本地化质量检查、表格处理与修订回填。" data-en="Localization quality checks, spreadsheet processing, and revision workflows.">本地化质量检查、表格处理与修订回填。</p>
+          <p class="project-platform" data-zh="桌面应用" data-en="Desktop app">桌面应用</p>
+          <a class="project-link" href="https://momoqatools.pages.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="查看 QAtools" data-en="Explore QAtools">查看 QAtools</span><span aria-hidden="true">↗</span></a>
         </div>
+        <a class="project-preview" href="https://momoqatools.pages.dev/" target="_blank" rel="noopener noreferrer" data-zh-label="打开 QAtools 使用指南" data-en-label="Open the QAtools handbook" aria-label="打开 QAtools 使用指南">
+          <img src="assets/previews/qatools-artwork.jpg" width="1536" height="1024" alt="QAtools 概念插画：放大镜与校对清单" data-zh-alt="QAtools 概念插画：放大镜与校对清单" data-en-alt="QAtools concept illustration: a magnifying glass over a review checklist" loading="lazy" decoding="async">
+        </a>
       </article>
-      <article class="project" id="toolhub" data-project="2" aria-labelledby="toolhub-title">
-        <div class="project-waypoint" aria-hidden="true"><span>03 — SIMPLIFY</span><span class="waypoint-line"></span></div>
-        <div class="project-content">
-          <div class="project-kicker"><span class="project-number">03 / 03</span><span>EVERYDAY UTILITIES</span></div>
-          <a class="project-preview toolhub-preview" href="https://momotools.dorajackcui.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label="打开 Tool Hub" data-zh-label="打开 Tool Hub" data-en-label="Open Tool Hub">
-            <div class="browser-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>momotools.dorajackcui.workers.dev</span><span aria-hidden="true">↗</span></div>
-            <div class="toolhub-overview"><div class="toolhub-top"><strong><span aria-hidden="true">⌘</span> Tool Hub</strong><span data-zh="功能概览" data-en="CAPABILITY OVERVIEW">功能概览</span></div><div class="utility-grid"><div><span class="utility-icon">{ }</span><strong>Tag Checker</strong><span data-zh="标签与占位符检查" data-en="Tags & placeholders">标签与占位符检查</span></div><div><span class="utility-icon diff-icon">A<span>⇄</span>A</span><strong>Text Diff</strong><span data-zh="文本比较" data-en="Text comparison">文本比较</span></div></div><div class="toolhub-bottom"><span><span class="tiny-dot"></span><span data-zh="浏览器本地处理" data-en="Processed in your browser">浏览器本地处理</span></span><span>Excel / CSV</span></div></div>
-            <span class="preview-hover" data-zh="打开项目 ↗" data-en="Open project ↗">打开项目 ↗</span>
-          </a>
-          <div class="project-title-row"><h3 id="toolhub-title">Tool Hub<span class="accent">.</span></h3><span class="project-type" data-zh="网页工具" data-en="WEB APP">网页工具</span></div>
-          <p class="project-description" data-zh="打开浏览器，解决手边的小问题。将标签检查与文本比较集中到一个工作台，支持 Excel / CSV 导入，内容在浏览器本地处理。" data-en="Open a tab. Solve the little things. A focused workbench for tag checking and text comparison, with Excel / CSV import and local processing in your browser.">打开浏览器，解决手边的小问题。将标签检查与文本比较集中到一个工作台，支持 Excel / CSV 导入，内容在浏览器本地处理。</p>
-          <ul class="project-tags"><li>Tag Checker</li><li>Text Diff</li><li>Local processing</li></ul>
-          <a class="text-link" href="https://momotools.dorajackcui.workers.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="打开工具" data-en="Open the tools">打开工具</span><span aria-hidden="true">↗</span></a>
+      <article class="project" id="toolhub" aria-labelledby="toolhub-title">
+        <div class="project-copy">
+          <p class="project-type" data-zh="03 / 实用工具" data-en="03 / UTILITIES">03 / 实用工具</p>
+          <h3 id="toolhub-title">Tool Hub<span class="brand-dot" aria-hidden="true">.</span></h3>
+          <p class="project-description" data-zh="标签检查与文本比较。支持 Excel / CSV，内容在浏览器本地处理。" data-en="Tag checking and text comparison. Import Excel / CSV files and process them locally in your browser.">标签检查与文本比较。支持 Excel / CSV，内容在浏览器本地处理。</p>
+          <p class="project-platform" data-zh="网页应用" data-en="Web app">网页应用</p>
+          <a class="project-link" href="https://momotools.dorajackcui.workers.dev/" target="_blank" rel="noopener noreferrer"><span data-zh="打开 Tool Hub" data-en="Open Tool Hub">打开 Tool Hub</span><span aria-hidden="true">↗</span></a>
         </div>
+        <a class="project-preview" href="https://momotools.dorajackcui.workers.dev/" target="_blank" rel="noopener noreferrer" data-zh-label="打开 Tool Hub" data-en-label="Open Tool Hub" aria-label="打开 Tool Hub">
+          <img src="assets/previews/toolhub-artwork.jpg" width="1536" height="1024" alt="Tool Hub 概念插画：标签括号与并排文本" data-zh-alt="Tool Hub 概念插画：标签括号与并排文本" data-en-alt="Tool Hub concept illustration: tag brackets and paired text sheets" loading="lazy" decoding="async">
+        </a>
       </article>
-    </section>
-    <nav class="project-dock" id="project-dock" aria-label="项目快速导航" data-zh-label="项目快速导航" data-en-label="Project navigation"><span class="dock-label">EXPLORE</span><a href="#momocat" aria-label="momoCAT" data-index="0">01</a><a href="#qatools" aria-label="QAtools" data-index="1">02</a><a href="#toolhub" aria-label="Tool Hub" data-index="2">03</a><span class="dock-progress"><span id="dock-progress-fill"></span></span></nav>
-    <section class="about section-shell" id="about" aria-labelledby="about-title">
-      <div class="section-heading"><h2 id="about-title"><span class="eyebrow-index">02 /</span><span data-zh="关于我" data-en="A little about me">关于我</span></h2><span class="mono">HUMAN BEHIND THE TOOLS</span></div>
-      <div class="about-grid"><div><p class="about-statement">Less friction.<br /><span class="accent">More possibility.</span></p><div class="about-identity"><span class="identity-symbol" aria-hidden="true">✳</span><div><strong>Zhiyang Cui</strong><span>DEVELOPER / LOCALIZATION</span></div></div></div><div class="about-copy"><p data-zh="我关注语言、技术，以及它们相遇的地方。" data-en="I'm interested in language, technology, and the places where they meet.">我关注语言、技术，以及它们相遇的地方。</p><p data-zh="这些项目来自本地化工作中的实际需求：让翻译多一点上下文，让检查少一点重复，让常用操作更简单。我把这些想法写成代码，做成自己也愿意每天使用的工具。" data-en="These projects grow out of real localization needs: more context for translation, less repetition in quality checks, and simpler everyday workflows. I turn those ideas into tools I'd want to use myself.">这些项目来自本地化工作中的实际需求：让翻译多一点上下文，让检查少一点重复，让常用操作更简单。我把这些想法写成代码，做成自己也愿意每天使用的工具。</p><div class="interests"><span>Language</span><span class="accent">×</span><span>Code</span><span class="accent">×</span><span>Curiosity</span></div><a class="primary-link contact-link" href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer"><span data-zh="在 GitHub 找到我" data-en="Find me on GitHub">在 GitHub 找到我</span><span aria-hidden="true">↗</span></a></div></div>
     </section>
   </main>
-  <footer class="site-footer section-shell"><span>© <span id="year">2026</span> Zhiyang Cui</span><span class="footer-note">Made for a multilingual world<span class="accent">.</span></span><a href="#top"><span data-zh="回到顶部" data-en="Back to top">回到顶部</span> <span aria-hidden="true">↑</span></a></footer>
+  <footer class="site-footer shell"><span>© 2026 Zhiyang Cui</span><div><a href="reference.html" data-zh="设计参考" data-en="Design reference">设计参考</a><a href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
 </body>
 </html>
