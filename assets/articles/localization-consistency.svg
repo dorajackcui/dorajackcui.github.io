@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1024" viewBox="0 0 1200 1024" role="img" aria-labelledby="title description">
+  <title id="title">AI 翻译中的六种一致性</title>
+  <desc id="description">奇幻 RPG 中译英句段表。1：月影石应按TB译为Moonstone，第1行却用Lunar Stone。2：法力不足应沿用TM中的Not enough mana.，第3行却用Insufficient MP.。3：第4行用her指代莉娅，第5行却用he，需改为she。4：第2和9行原文同为任务已完成，译文分别为Quest complete.和Mission completed.。5：第6行获得暗影护盾是第7行的子字符串，Shadow Shield与Umbral Barrier需要统一。6：第8行You will inflict 120 damage.不符合风格指南要求的Deals … damage.句式，应改为Deals 120 damage.。</desc>
+  <style>
+    text { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #2f2f2c; font-size: 17px; }
+    .small { font-size: 14px; fill: #707068; }
+    .diagram-title { font-size: 24px; font-weight: 600; }
+    .label { font-size: 15px; font-weight: 600; }
+    .note { font-size: 16px; }
+    .strong { font-weight: 600; }
+    .number { font-size: 13px; font-weight: 600; fill: white; text-anchor: middle; }
+    .row { font-size: 14px; fill: #707068; text-anchor: middle; font-variant-numeric: tabular-nums; }
+    .line { stroke: #e9e9e5; stroke-width: 1; }
+    .link { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .tb { fill: #995322; } .tm { fill: #285fa4; } .context { fill: #08766d; } .repeat { fill: #7354a0; } .sub { fill: #aa4567; } .guide { fill: #64691e; }
+  </style>
+  <rect width="1200" height="1024" fill="#fff"/>
+  <text x="40" y="49" class="diagram-title">AI 翻译中的六种一致性</text>
+  <text x="1160" y="48" class="small" text-anchor="end">奇幻 RPG · 中 → 英</text>
+
+  <rect x="40" y="88" width="300" height="110" rx="6" fill="#f7f7f5"/>
+  <rect x="356" y="88" width="370" height="110" rx="6" fill="#f7f7f5"/>
+  <rect x="742" y="88" width="418" height="110" rx="6" fill="#f7f7f5"/>
+  <circle cx="66" cy="114" r="11" fill="#995322"/><text x="66" y="118.5" class="number">1</text>
+  <text x="86" y="120" class="label">TB · 术语库</text>
+  <text x="60" y="163">月影石</text><text x="137" y="163" class="small">→</text><text x="175" y="163" class="tb strong">Moonstone</text>
+  <circle cx="382" cy="114" r="11" fill="#285fa4"/><text x="382" y="118.5" class="number">2</text>
+  <text x="402" y="120" class="label">TM · 翻译记忆库</text>
+  <text x="376" y="151">法力不足。</text>
+  <text x="376" y="179" class="tm strong">Not enough mana.</text>
+  <circle cx="768" cy="114" r="11" fill="#64691e"/><text x="768" y="118.5" class="number">6</text>
+  <text x="788" y="120" class="label">Style Guide · 风格指南</text>
+  <text x="762" y="151">技能描述</text>
+  <text x="762" y="179" class="guide strong">Deals … damage.</text>
+
+  <rect x="40" y="226" width="694" height="46" fill="#f7f7f5"/>
+  <text x="65" y="255" class="small" text-anchor="middle">行</text>
+  <text x="110" y="255" class="label">Source · 中文</text>
+  <text x="340" y="255" class="label">Target · 英文</text>
+  <text x="818" y="255" class="label">一致性检查</text>
+  <path d="M40 272H734 M40 352H734 M40 432H734 M40 512H734 M40 592H734 M40 672H734 M40 752H734 M40 832H734 M40 912H734 M40 992H734 M314 226V992" class="line"/>
+
+  <g id="segment-1">
+    <text x="65" y="319" class="row">01</text>
+    <rect x="141" y="296" width="56" height="28" rx="3" fill="#fbecdf"/>
+    <text id="source-1" x="110" y="317">获得<tspan class="tb strong">月影石</tspan>。</text>
+    <text id="target-1" x="340" y="317">Obtained a <tspan class="tb strong">Lunar Stone</tspan>.</text>
+    <circle cx="709" cy="312" r="11" fill="#995322"/><text x="709" y="316.5" class="number">1</text>
+  </g>
+  <path d="M738 312H791" class="link" stroke="#995322"/>
+  <circle cx="791" cy="312" r="3" fill="#995322"/>
+  <text x="818" y="293" class="tb strong">1  术语一致性</text>
+  <text x="818" y="319" class="note">第 1 行 ↔ TB</text>
+  <text x="818" y="343" class="small">Lunar Stone → Moonstone</text>
+
+  <g id="segment-2">
+    <text x="65" y="399" class="row">02</text>
+    <rect x="106" y="376" width="110" height="28" rx="3" fill="#f0eafa"/>
+    <text id="source-2" x="110" y="397">任务已完成。</text>
+    <text id="target-2" x="340" y="397" class="repeat strong">Quest complete.</text>
+    <circle cx="709" cy="392" r="11" fill="#7354a0"/><text x="709" y="396.5" class="number">4</text>
+  </g>
+
+  <g id="segment-3">
+    <text x="65" y="479" class="row">03</text>
+    <text id="source-3" x="110" y="477">法力不足。</text>
+    <text id="target-3" x="340" y="477" class="tm strong">Insufficient MP.</text>
+    <circle cx="709" cy="472" r="11" fill="#285fa4"/><text x="709" y="476.5" class="number">2</text>
+  </g>
+  <path d="M738 472H791" class="link" stroke="#285fa4"/>
+  <circle cx="791" cy="472" r="3" fill="#285fa4"/>
+  <text x="818" y="453" class="tm strong">2  TM 一致性</text>
+  <text x="818" y="479" class="note">第 3 行 ↔ TM</text>
+  <text x="818" y="503" class="small">沿用 Not enough mana.</text>
+
+  <g id="segment-4">
+    <text x="65" y="559" class="row">04</text>
+    <text id="source-4" x="110" y="557">莉娅举起<tspan class="context strong">她</tspan>的法杖。</text>
+    <text id="target-4" x="340" y="557">Lia raised <tspan class="context strong">her</tspan> staff.</text>
+    <circle cx="709" cy="552" r="11" fill="#08766d"/><text x="709" y="556.5" class="number">3</text>
+  </g>
+  <g id="segment-5">
+    <text x="65" y="639" class="row">05</text>
+    <text id="source-5" x="110" y="637">随后低声吟唱咒文。</text>
+    <text id="target-5" x="340" y="637">Then <tspan class="context strong">he</tspan> whispered a spell.</text>
+    <circle cx="709" cy="632" r="11" fill="#08766d"/><text x="709" y="636.5" class="number">3</text>
+  </g>
+  <path d="M738 552H754V632H738 M754 592H791" class="link" stroke="#08766d"/>
+  <circle cx="791" cy="592" r="3" fill="#08766d"/>
+  <text x="818" y="573" class="context strong">3  上下文一致性</text>
+  <text x="818" y="599" class="note">第 4 行 ↔ 第 5 行</text>
+  <text x="818" y="623" class="small">同一角色：he → she</text>
+
+  <g id="segment-6">
+    <text x="65" y="719" class="row">06</text>
+    <rect x="106" y="696" width="110" height="28" rx="3" fill="#f9eaf0"/>
+    <text id="source-6" x="110" y="717">获得暗影护盾</text>
+    <text id="target-6" x="340" y="717">Gain <tspan class="sub strong">Shadow Shield</tspan></text>
+    <circle cx="709" cy="712" r="11" fill="#aa4567"/><text x="709" y="716.5" class="number">5</text>
+  </g>
+  <g id="segment-7">
+    <text x="65" y="799" class="row">07</text>
+    <rect x="157" y="776" width="110" height="28" rx="3" fill="#f9eaf0"/>
+    <text id="source-7" x="110" y="797">施法后获得暗影护盾。</text>
+    <text id="target-7" x="340" y="797">Gain <tspan class="sub strong">Umbral Barrier</tspan> after casting.</text>
+    <circle cx="709" cy="792" r="11" fill="#aa4567"/><text x="709" y="796.5" class="number">5</text>
+  </g>
+  <path d="M738 712H754V792H738 M754 752H791" class="link" stroke="#aa4567"/>
+  <circle cx="791" cy="752" r="3" fill="#aa4567"/>
+  <text x="818" y="733" class="sub strong">5  Subsegment 一致性</text>
+  <text x="818" y="759" class="note">第 6 行 ⊂ 第 7 行的 source</text>
+  <text x="818" y="783" class="small">Umbral Barrier → Shadow Shield</text>
+
+  <g id="segment-8">
+    <text x="65" y="879" class="row">08</text>
+    <text id="source-8" x="110" y="877">造成120点伤害。</text>
+    <text id="target-8" x="340" y="877"><tspan class="guide strong">You will inflict</tspan> 120 damage.</text>
+    <circle cx="709" cy="872" r="11" fill="#64691e"/><text x="709" y="876.5" class="number">6</text>
+  </g>
+  <path d="M738 872H791" class="link" stroke="#64691e"/>
+  <circle cx="791" cy="872" r="3" fill="#64691e"/>
+  <text x="818" y="853" class="guide strong">6  风格指南一致性</text>
+  <text x="818" y="879" class="note">第 8 行 ↔ Style Guide</text>
+  <text x="818" y="903" class="small">改为 Deals 120 damage.</text>
+
+  <g id="segment-9">
+    <text x="65" y="959" class="row">09</text>
+    <rect x="106" y="936" width="110" height="28" rx="3" fill="#f0eafa"/>
+    <text id="source-9" x="110" y="957">任务已完成。</text>
+    <text id="target-9" x="340" y="957" class="repeat strong">Mission completed.</text>
+    <circle cx="709" cy="952" r="11" fill="#7354a0"/><text x="709" y="956.5" class="number">4</text>
+  </g>
+  <path d="M102 392H94V952H102" class="link" stroke="#7354a0"/>
+  <path d="M738 392H777V952H738 M777 952H791" class="link" stroke="#7354a0" stroke-dasharray="4 5"/>
+  <circle cx="791" cy="952" r="3" fill="#7354a0"/>
+  <text x="818" y="933" class="repeat strong">4  同批次相同 source</text>
+  <text x="818" y="959" class="note">第 2 行 ↔ 第 9 行</text>
+  <text x="818" y="983" class="small">统一为 Quest complete.</text>
+</svg>

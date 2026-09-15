@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Generated from content/articles/localization-consistency.md. Edit the Markdown, then run npm run build. -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="奇幻 RPG · 中 → 英">
+  <title>AI 翻译中的六种一致性 — YIZHI</title>
+  <link rel="canonical" href="https://dorajackcui.github.io/articles/localization-consistency/">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/home.css">
+  <link rel="stylesheet" href="../../css/article.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#article-content">跳到正文</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="../../index.html" aria-label="YIZHI 首页">YIZHI<span aria-hidden="true">.</span></a>
+    <nav aria-label="主导航">
+      <a href="../../index.html#projects">项目</a>
+      <a href="../../index.html#articles" aria-current="location">文章</a>
+      <a href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="shell">
+    <article aria-labelledby="article-title">
+      <header class="article-header">
+        <div class="article-meta"><span>AI 翻译</span><time datetime="2026-09-15">2026.09.15</time><span>Zhiyang Cui</span></div>
+        <h1 id="article-title">AI 翻译中的六种一致性</h1>
+      </header>
+      <div id="article-content" class="prose">
+<p>一句 AI 译文即使读起来通顺，也可能与术语库、已有译文、其他句段或项目风格指南不一致。下面用一组奇幻 RPG 游戏文本，看看这些差异发生在哪里。</p>
+<figure class="wide-figure"><div class="figure-scroll" tabindex="0" role="region" aria-label="一致性示意图，可横向滚动"><img src="../../assets/articles/localization-consistency.svg" alt="奇幻 RPG 中译英句段表：第1行的月影石与TB、第3行的法力不足与TM、第4和5行的角色指代、第2和9行的重复提示、第6和7行的技能效果片段，以及第8行的技能描述与风格指南。"></div><figcaption><a href="../../assets/articles/localization-consistency.svg">查看完整图 ↗</a></figcaption></figure>
+<h2 id="01-术语一致性">01 · 术语一致性</h2>
+<p>项目术语库（TB）规定「月影石」译为 <strong>Moonstone</strong>。第 1 行却用了 <strong>Lunar Stone</strong>。</p>
+<ul>
+<li>原文：获得月影石。</li>
+<li>当前：Obtained a <strong>Lunar Stone</strong>.</li>
+<li>建议：Obtained a <strong>Moonstone</strong>.</li>
+</ul>
+<p>检查的是句段中的用词是否符合当前项目的术语规范。</p>
+<h2 id="02-tm-一致性">02 · TM 一致性</h2>
+<p>翻译记忆库（TM）中，「法力不足。」已有确认译文 <strong>Not enough mana.</strong>。第 3 行的 <strong>Insufficient MP.</strong> 虽然意思相近，却没有沿用同一条提示的既有表达。</p>
+<ul>
+<li>原文：法力不足。</li>
+<li>当前：<strong>Insufficient MP.</strong></li>
+<li>建议：<strong>Not enough mana.</strong></li>
+</ul>
+<p>对照的是当前句段与项目中仍然适用的 TM 记录。</p>
+<h2 id="03-上下文一致性">03 · 上下文一致性</h2>
+<p>第 4 行「莉娅举起她的法杖。」译为 <strong>Lia raised her staff.</strong>。紧接着，第 5 行「随后低声吟唱咒文。」却译为 <strong>Then he whispered a spell.</strong></p>
+<p>后一句省略了主语，仍在描写莉娅，英文指代需要接上前文。</p>
+<ul>
+<li>当前：Then <strong>he</strong> whispered a spell.</li>
+<li>建议：Then <strong>she</strong> whispered a spell.</li>
+</ul>
+<p>这里需要检查相邻句段的语义关系，而不只是寻找相同的词。</p>
+<h2 id="04-同批次相同-source">04 · 同批次相同 source</h2>
+<p>第 2 行和最后的第 9 行，都是同一条任务完成提示「任务已完成。」，却出现了两种译法。</p>
+<ul>
+<li>第 2 行：<strong>Quest complete.</strong></li>
+<li>第 9 行：<strong>Mission completed.</strong></li>
+<li>建议：统一为 <strong>Quest complete.</strong></li>
+</ul>
+<p>对照内容就在当前批次里，两行可以相隔很远，也不一定已经进入 TM。是否统一，要结合重复原文的实际用途判断。</p>
+<h2 id="05-subsegment-一致性">05 · Subsegment 一致性</h2>
+<p>第 6 行的完整原文「获得暗影护盾」，原样出现在第 7 行「施法后获得暗影护盾。」中，英文技能效果名却发生了变化。</p>
+<ul>
+<li>第 6 行：Gain <strong>Shadow Shield</strong></li>
+<li>第 7 行：Gain <strong>Umbral Barrier</strong> after casting.</li>
+<li>建议：Gain <strong>Shadow Shield</strong> after casting.</li>
+</ul>
+<p>这里比较的是短句与长句中的相同片段。英文语序可以随整句调整，但同一个技能效果的名称需要保持一致。</p>
+<h2 id="06-风格指南一致性">06 · 风格指南一致性</h2>
+<p>术语和句意都正确，译文仍可能不符合项目的表达规范。例如：</p>
+<ul>
+<li>技能描述统一用 <code>Deals … damage.</code>，有些句子却突然改成 <code>You will inflict … damage.</code>。</li>
+<li>同一位古典口吻的法师，无缘由地从庄重措辞变成现代俚语。</li>
+<li>技能名的大小写、数值单位、标点格式前后不统一。</li>
+</ul>
+<p>图中第 8 行「造成120点伤害。」就偏离了技能描述的句式规范。</p>
+<ul>
+<li>当前：<strong>You will inflict</strong> 120 damage.</li>
+<li>建议：<strong>Deals</strong> 120 damage.</li>
+</ul>
+<p>这类问题不一定能通过 TB 或 TM 发现，需要对照 <strong>Style Guide、角色语言设定和格式规范</strong>。</p>
+
+      </div>
+      <div class="article-end"><a class="back-link" href="../../index.html#articles">← 返回文章列表</a></div>
+    </article>
+  </main>
+  <footer class="site-footer shell"><span>© 2026 Zhiyang Cui</span><div><a href="../../reference.html">设计参考</a><a href="https://github.com/dorajackcui" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
+</body>
+</html>

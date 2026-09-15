@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-articles.mjs",
+    "predev": "npm run build",
     "dev": "node scripts/serve.mjs",
+    "prepreview": "npm run build",
     "preview": "node scripts/serve.mjs",
     "check": "node scripts/check.mjs",
     "reference:pack": "python3 scripts/package-reference.py"
