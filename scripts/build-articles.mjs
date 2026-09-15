@@ -27,9 +27,23 @@ export function readArticle(source, filename) {
   return { ...metadata, lang: metadata.lang || 'zh-CN', category: metadata.category || '文章', slug, body: match[2] };
 }
 
-export function renderMarkdown(body) {
+export function renderMarkdown(body, previews = {}) {
   const headings = new Set(['top', 'article-title', 'article-content']);
+  let previewCount = 0;
   const marked = new Marked({ gfm: true, renderer: {
+    link({ href, tokens }) {
+      if (!href.startsWith('preview:')) return false;
+      const key = href.slice('preview:'.length);
+      const preview = previews[key];
+      if (!/^[a-z0-9-]+$/.test(key) || !preview) throw new Error(`Unknown image preview: ${key}`);
+      if (!/^\.\.\/\.\.\/assets\/[a-zA-Z0-9/_-]+\.(?:png|jpe?g|webp)$/.test(preview.image) || !Number.isInteger(preview.width) || !Number.isInteger(preview.height) || preview.width <= 0 || preview.height <= 0) throw new Error(`Invalid image preview: ${key}`);
+      for (const field of ['name', 'caption', 'alt', 'source', 'sourceLabel']) {
+        if (typeof preview[field] !== 'string' || !preview[field]) throw new Error(`Image preview ${key} needs ${field}`);
+      }
+      const id = `preview-${key}-${++previewCount}`;
+      const credit = preview.credit ? `<span class="preview-credit">${escape(preview.credit)} · <a href="${escape(preview.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escape(preview.license)}</a></span>` : '';
+      return `<span class="pokemon-peek" data-preview="${key}"><button class="pokemon-trigger" type="button" aria-label="查看 ${escape(preview.name)} 的图片" aria-expanded="false" aria-controls="${id}">${this.parser.parseInline(tokens)}<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="2" width="13" height="12" rx="2"/><circle cx="5" cy="6" r="1"/><path d="M2 12L6.5 8.5L9 10.5L11 8.5L14 11"/></svg></button><span class="pokemon-card" id="${id}" role="region" aria-label="${escape(preview.name)}" hidden><img src="${escape(preview.image)}" width="${preview.width}" height="${preview.height}" alt="${escape(preview.alt)}" decoding="async"><span class="pokemon-card-footer"><strong>${escape(preview.caption)}</strong><a href="${escape(preview.source)}" target="_blank" rel="noopener noreferrer">${escape(preview.sourceLabel)}</a></span>${credit}</span></span>`;
+    },
     heading({ tokens, depth, text }) {
       if (depth === 1) throw new Error('Use the front matter title for H1 and ## for article sections');
       const base = text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '') || 'section';
@@ -40,13 +54,22 @@ export function renderMarkdown(body) {
       return `<h${depth} id="${escape(id)}">${this.parser.parseInline(tokens)}</h${depth}>\n`;
     },
     paragraph({ tokens }) {
+      const previewChain = tokens.some(token => token.type === 'link' && token.href.startsWith('preview:')) && tokens.every(token => ['link', 'strong'].includes(token.type) || token.type === 'text' && /^[\s→＋＝+]+$/.test(token.text));
+      if (previewChain) return `<p class="name-chain">${this.parser.parseInline(tokens)}</p>\n`;
       if (tokens.length !== 1 || tokens[0].type !== 'image') return false;
       const token = tokens[0];
       const diagram = /\.svg(?:[?#].*)?$/i.test(token.href);
       const picture = this.parser.parseInline(tokens);
-      return `<figure${diagram ? ' class="wide-figure"' : ''}>${diagram ? `<div class="figure-scroll" tabindex="0" role="region" aria-label="一致性示意图，可横向滚动">${picture}</div>` : picture}<figcaption>${token.title ? `<span>${escape(token.title)}</span>` : ''}<a href="${escape(token.href)}">查看完整图 ↗</a></figcaption></figure>\n`;
+      return `<figure${diagram ? ' class="wide-figure"' : ''}>${diagram ? `<div class="figure-scroll" tabindex="0" role="region" aria-label="文章配图，可横向滚动">${picture}</div>` : picture}<figcaption>${token.title ? `<span>${escape(token.title)}</span>` : ''}<a href="${escape(token.href)}">查看完整图 ↗</a></figcaption></figure>\n`;
     },
     table(token) {
+      if (token.header.map(cell => cell.text).join('|') === '宝可梦|日本語|Français') {
+        const names = token.rows.map(row => {
+          const [chinese, japanese, french] = row.map(cell => this.parser.parseInline(cell.tokens));
+          return `<div class="name-species" role="listitem"><div class="name-chinese" lang="zh-CN">${chinese}</div><div class="name-japanese"><span class="name-language" aria-label="日语">JA</span><span lang="ja">${japanese}</span></div><div class="name-french"><span class="name-language" aria-label="法语">FR</span><span lang="fr">${french}</span></div></div>`;
+        }).join('\n');
+        return `<div class="pokemon-names${token.rows.length === 1 ? ' is-single' : ''}" role="list" aria-label="宝可梦的中文、日文与法文名字">${names}</div>\n`;
+      }
       const header = token.header.map(cell => this.tablecell(cell)).join('');
       const body = token.rows.map(row => `<tr>${row.map(cell => this.tablecell(cell)).join('')}</tr>`).join('\n');
       return `<div class="table-scroll" tabindex="0" role="region" aria-label="文章表格，可横向滚动"><table><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table></div>\n`;
@@ -59,12 +82,18 @@ export function renderMarkdown(body) {
 export async function buildArticles({ check = false } = {}) {
   const directory = resolve(root, 'content/articles');
   const files = (await readdir(directory)).filter(file => file.endsWith('.md')).sort();
-  const articles = await Promise.all(files.map(async file => readArticle(await readFile(resolve(directory, file), 'utf8'), file)));
+  const articles = await Promise.all(files.map(async file => {
+    const article = readArticle(await readFile(resolve(directory, file), 'utf8'), file);
+    article.previews = {};
+    try { article.previews = JSON.parse(await readFile(resolve(directory, `${article.slug}.previews.json`), 'utf8')); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
+    return article;
+  }));
   articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
   const template = await readFile(resolve(root, 'scripts/templates/article.html'), 'utf8');
   const outputs = new Map();
   for (const article of articles) {
-    const values = { TITLE: escape(article.title), DESCRIPTION: escape(article.description), LANG: escape(article.lang), CATEGORY: escape(article.category), DATE: article.date, DISPLAY_DATE: article.date.replaceAll('-', '.'), SLUG: article.slug, SOURCE: `content/articles/${article.slug}.md`, CONTENT: renderMarkdown(article.body) };
+    const values = { TITLE: escape(article.title), DESCRIPTION: escape(article.description), LANG: escape(article.lang), CATEGORY: escape(article.category), DATE: article.date, DISPLAY_DATE: article.date.replaceAll('-', '.'), SLUG: article.slug, SOURCE: `content/articles/${article.slug}.md`, CONTENT: renderMarkdown(article.body, article.previews) };
     outputs.set(`articles/${article.slug}/index.html`, template.replace(/\{\{([A-Z_]+)\}\}/g, (_, key) => {
       if (!(key in values)) throw new Error(`Unknown template field: ${key}`);
       return values[key];

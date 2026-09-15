@@ -60,7 +60,7 @@ const handoff = handoffSection.split(/\r?\n/).filter(line => line.startsWith('>'
 const previewPrompt = reference.match(/<textarea\b[^>]*id="handoff-prompt"[^>]*>([\s\S]*?)<\/textarea>/)?.[1].replace(/\r\n/g, '\n');
 assert.equal(previewPrompt, handoff, 'Reference handoff is out of sync with the guide');
 
-for (const file of ['main.js', 'reference.js', 'scripts/serve.mjs', 'scripts/check.mjs', 'scripts/build-articles.mjs']) {
+for (const file of ['main.js', 'article.js', 'reference.js', 'scripts/serve.mjs', 'scripts/check.mjs', 'scripts/build-articles.mjs']) {
   const result = spawnSync(process.execPath, ['--check', resolve(root, file)], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }

@@ -35,6 +35,38 @@
 .prose th { font-weight: 600; background: var(--surface); }
 .prose td, .prose th { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .article-end { max-width: 740px; margin: 0 auto 54px; padding-top: 22px; border-top: 1px solid var(--line); }
+.name-chain { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.pokemon-names { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 42px; margin: 6px 0 26px; padding: 22px 0; border-block: 1px solid var(--line); }
+.name-species { position: relative; display: grid; gap: 8px; min-width: 0; line-height: 1.6; }
+.name-species:not(:last-child)::after { content: "→"; position: absolute; top: 0; right: -29px; color: #b6b6ac; font-size: 17px; }
+.name-chinese { font-size: 14px; }
+.name-japanese, .name-french { display: flex; align-items: baseline; gap: 12px; }
+.name-japanese { font-size: 16px; }
+.name-french { font-size: 21px; letter-spacing: -.025em; font-weight: 500; }
+.name-language { flex: 0 0 16px; color: #707068; font-size: 10px; letter-spacing: .04em; font-weight: 500; }
+.name-japanese strong, .name-french strong { color: #ad5538; }
+.pokemon-names.is-single { grid-template-columns: minmax(0, 1fr); }
+.pokemon-names.is-single .name-species { grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; align-items: baseline; }
+.wordplay-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0 0 24px; padding: 20px 24px; background: #faf9f6; border-radius: 6px; }
+.wordplay-pair > div { display: grid; gap: 5px; }
+.wordplay-pair [lang="ja"] { font-size: 22px; font-weight: 500; letter-spacing: .04em; }
+.wordplay-pair strong { color: #ad5538; }
+.wordplay-pair .word-meaning { font-size: 14px; }
+[lang="ja"] { font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; }
+.pokemon-peek { display: inline-block; position: relative; }
+.pokemon-trigger { display: inline-flex; align-items: baseline; gap: 5px; padding: 0; font: inherit; font-weight: 600; text-decoration: underline dotted var(--brand-accent); text-underline-offset: 5px; white-space: nowrap; }
+.pokemon-trigger svg { flex: none; align-self: center; color: var(--brand-accent); }
+.pokemon-trigger:hover { color: #ad5538; }
+.pokemon-card { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(calc(-50% + var(--peek-shift, 0px))); z-index: 4; width: min(224px, calc(100vw - 24px)); padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 28px #2f2f2c18; text-align: left; font-size: 13px; font-weight: 400; line-height: 1.6; }
+.pokemon-card[hidden] { display: none; }
+.pokemon-card::before { content: ""; position: absolute; inset: -12px 0 auto; height: 12px; }
+.pokemon-peek[data-side="above"] .pokemon-card { top: auto; bottom: calc(100% + 10px); }
+.pokemon-peek[data-side="above"] .pokemon-card::before { top: auto; bottom: -12px; }
+.pokemon-card img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; padding: 10px; background: var(--surface); border-radius: 4px; }
+.pokemon-card-footer { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 10px; }
+.pokemon-card-footer strong { font-size: 14px; }
+.pokemon-card-footer a { font-size: 12px; }
+.preview-credit { display: block; margin-top: 8px; font-size: 10px; color: #707068; }
 .site-header nav [aria-current] { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: #b6b6ac; }
 @media (max-width: 700px) {
   .article-header { padding-top: 20px; }
@@ -42,4 +74,19 @@
   .prose { padding-bottom: 35px; }
   .prose figcaption { font-size: 13px; }
   .article-end { margin-bottom: 32px; }
+}
+@media (max-width: 600px) {
+  .pokemon-names { grid-template-columns: minmax(0, 1fr); row-gap: 30px; padding-block: 20px; }
+  .name-species, .pokemon-names.is-single .name-species { grid-template-columns: 104px minmax(0, 1fr); gap: 4px 14px; align-items: baseline; }
+  .name-chinese { grid-column: 1; grid-row: 1 / 3; }
+  .name-japanese, .name-french { grid-column: 2; gap: 9px; }
+  .name-french { font-size: 20px; }
+  .name-species:not(:last-child)::after { content: "↓"; left: 0; right: auto; top: auto; bottom: -24px; }
+  .wordplay-pair { gap: 16px; padding: 16px; }
+  .wordplay-pair [lang="ja"] { font-size: 19px; }
+}
+@media (max-width: 360px) {
+  .name-species, .pokemon-names.is-single .name-species { grid-template-columns: 91px minmax(0, 1fr); gap: 4px 10px; }
+  .name-french { font-size: 18px; }
+  .name-japanese, .name-french { gap: 6px; }
 }

@@ -1,0 +1,145 @@
+{
+  "bulbizarre": {
+    "name": "Bulbizarre（妙蛙种子）",
+    "caption": "妙蛙种子 · #0001",
+    "image": "../../assets/articles/bulbizarre.png",
+    "width": 475,
+    "height": 475,
+    "alt": "妙蛙种子（Bulbizarre）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/bulbizarre",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "herbizarre": {
+    "name": "Herbizarre（妙蛙草）",
+    "caption": "妙蛙草 · #0002",
+    "image": "../../assets/articles/herbizarre.png",
+    "width": 475,
+    "height": 475,
+    "alt": "妙蛙草（Herbizarre）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/herbizarre",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "florizarre": {
+    "name": "Florizarre（妙蛙花）",
+    "caption": "妙蛙花 · #0003",
+    "image": "../../assets/articles/florizarre.png",
+    "width": 475,
+    "height": 475,
+    "alt": "妙蛙花（Florizarre）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/florizarre",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "salameche": {
+    "name": "Salamèche（小火龙）",
+    "caption": "小火龙 · #0004",
+    "image": "../../assets/articles/salameche.png",
+    "width": 475,
+    "height": 475,
+    "alt": "小火龙（Salamèche）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/salameche",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "reptincel": {
+    "name": "Reptincel（火恐龙）",
+    "caption": "火恐龙 · #0005",
+    "image": "../../assets/articles/reptincel.png",
+    "width": 475,
+    "height": 475,
+    "alt": "火恐龙（Reptincel）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/reptincel",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "dracaufeu": {
+    "name": "Dracaufeu（喷火龙）",
+    "caption": "喷火龙 · #0006",
+    "image": "../../assets/articles/dracaufeu.png",
+    "width": 475,
+    "height": 475,
+    "alt": "喷火龙（Dracaufeu）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/dracaufeu",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "carapuce": {
+    "name": "Carapuce（杰尼龟）",
+    "caption": "杰尼龟 · #0007",
+    "image": "../../assets/articles/carapuce.png",
+    "width": 475,
+    "height": 475,
+    "alt": "杰尼龟（Carapuce）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/carapuce",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "carabaffe": {
+    "name": "Carabaffe（卡咪龟）",
+    "caption": "卡咪龟 · #0008",
+    "image": "../../assets/articles/carabaffe.png",
+    "width": 475,
+    "height": 475,
+    "alt": "卡咪龟（Carabaffe）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/carabaffe",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "tortank": {
+    "name": "Tortank（水箭龟）",
+    "caption": "水箭龟 · #0009",
+    "image": "../../assets/articles/tortank.png",
+    "width": 475,
+    "height": 475,
+    "alt": "水箭龟（Tortank）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/tortank",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "dardargnan": {
+    "name": "Dardargnan（大针蜂）",
+    "caption": "大针蜂 · #0015",
+    "image": "../../assets/articles/dardargnan.png",
+    "width": 475,
+    "height": 475,
+    "alt": "大针蜂（Dardargnan）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/dardargnan",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "feunard": {
+    "name": "Feunard（九尾）",
+    "caption": "九尾 · #0038",
+    "image": "../../assets/articles/feunard.png",
+    "width": 475,
+    "height": 475,
+    "alt": "九尾（Feunard）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/feunard",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "rondoudou": {
+    "name": "Rondoudou（胖丁）",
+    "caption": "胖丁 · #0039",
+    "image": "../../assets/articles/rondoudou.png",
+    "width": 475,
+    "height": 475,
+    "alt": "胖丁（Rondoudou）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/rondoudou",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "canarticho": {
+    "name": "Canarticho（大葱鸭）",
+    "caption": "大葱鸭 · #0083",
+    "image": "../../assets/articles/canarticho.png",
+    "width": 475,
+    "height": 475,
+    "alt": "大葱鸭（Canarticho）的官方立绘。",
+    "source": "https://www.pokemon.com/fr/pokedex/canarticho",
+    "sourceLabel": "官方图鉴 ↗"
+  },
+  "roudoudou-candy": {
+    "name": "roudoudou（糖果）",
+    "caption": "roudoudou · 糖果",
+    "image": "../../assets/articles/roudoudou-candy.jpg",
+    "width": 960,
+    "height": 844,
+    "alt": "一枚 roudoudou 糖果：黄色的贝壳形容器里装着有光泽的糖。",
+    "source": "https://commons.wikimedia.org/wiki/File:Roudoudou_recto.jpg",
+    "sourceLabel": "图片来源 ↗",
+    "credit": "Lionel Allorge",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+  }
+}

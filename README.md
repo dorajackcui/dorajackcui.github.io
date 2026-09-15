@@ -54,6 +54,10 @@ The build generates each article's `index.html` and updates the homepage article
 
 Article layout lives in `scripts/templates/article.html` and `css/article.css`; the shared font, header and footer styles come from `css/home.css`. Wide SVG diagrams and tables scroll within their own containers on smaller screens. The first article is written in Chinese; its title and summary remain in Chinese when the homepage navigation is switched to English.
 
+The Pokémon article uses an SVG naming diagram and inline `.pokemon-peek` image previews. Write `[Rondoudou](preview:rondoudou)` in Markdown and define its image, caption, source and optional credit in the article's sibling `.previews.json` file. The build generates unique accessible controls, including when one image is referenced more than once. `article.js` opens previews on mouse hover or keyboard focus; clicking/tapping pins or closes them. Only one preview stays open at a time. Escape and clicking outside dismiss them. The Pokémon artwork and roudoudou candy photo are documented in `assets/articles/SOURCES.md`.
+
+A Markdown table with the exact headers `宝可梦 | 日本語 | Français` renders as a responsive name comparison. Each row is one Pokémon: its Chinese name can contain a preview link, and `**bold**` highlights shared roots in the Japanese and French names. Evolution families appear in three columns on desktop and stack by Pokémon on mobile. A single-row table uses a compact horizontal layout. The names remain readable in the Markdown source; generated Japanese and French text has the corresponding `lang` attribute.
+
 Keep article chrome and figure captions minimal: no duplicate description beneath the article title, no top “all articles” backlink, and no explanatory captions that repeat a title or diagram. Alt text stays accessible without becoming a visible caption; only an explicit Markdown image title adds a caption. The first article uses fantasy RPG examples from Chinese to English.
 
 ## Source

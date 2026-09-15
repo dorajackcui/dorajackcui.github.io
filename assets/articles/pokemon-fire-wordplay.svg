@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="352" viewBox="0 0 1080 352" role="img" aria-labelledby="title description">
+  <title id="title">小火龙一家的法语命名：灯芯＋火花＝着火啦！</title>
+  <desc id="description">小火龙 Salamèche 的 mèche 是灯芯；火恐龙 Reptincel 的 incel 来自 étincelle，意思是火花；喷火龙 Dracaufeu 的 au feu 是着火啦。三个名字连起来构成一个笑话。</desc>
+  <style>
+    text { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; text-anchor: middle; fill: #2f2f2c; }
+    .name { font-size: 29px; font-weight: 600; }
+    .pokemon { font-size: 16px; fill: #707068; }
+    .root { fill: #ad5538; }
+    .word { font-size: 23px; font-weight: 600; fill: #ad5538; }
+    .meaning { font-size: 18px; }
+    .card { fill: #faf9f6; stroke: #e9e9e5; }
+    .connector { stroke: #d7c6bc; stroke-width: 1.5; }
+  </style>
+  <rect width="1080" height="352" fill="#fff"/>
+
+  <text x="180" y="38" class="pokemon">小火龙</text>
+  <text x="180" y="80" class="name">Sala<tspan class="root">mèche</tspan></text>
+  <text x="540" y="38" class="pokemon">火恐龙</text>
+  <text x="540" y="80" class="name">Rept<tspan class="root">incel</tspan></text>
+  <text x="900" y="38" class="pokemon">喷火龙</text>
+  <text x="900" y="80" class="name">Drac<tspan class="root">aufeu</tspan></text>
+
+  <path d="M180 95V117 M540 95V117 M900 95V117" class="connector"/>
+  <rect x="48" y="117" width="264" height="206" rx="8" class="card"/>
+  <rect x="408" y="117" width="264" height="206" rx="8" class="card"/>
+  <rect x="768" y="117" width="264" height="206" rx="8" fill="#fcf0e9" stroke="#ecd4c5"/>
+
+  <!-- An unlit candle: the wick is the part named by mèche. -->
+  <path d="M155 175H205V230Q180 242 155 230Z" fill="#e9ddc9" stroke="#b8a98e" stroke-width="1.5"/>
+  <ellipse cx="180" cy="175" rx="25" ry="7" fill="#fffdf6" stroke="#b8a98e" stroke-width="1.5"/>
+  <path d="M180 176C176 166 185 160 181 148" fill="none" stroke="#ad5538" stroke-width="4" stroke-linecap="round"/>
+  <text x="180" y="275" class="word">mèche</text>
+  <text x="180" y="305" class="meaning">灯芯</text>
+
+  <!-- A spark. -->
+  <path d="M540 159L547 183L571 190L547 197L540 221L533 197L509 190L533 183Z" fill="#d97757"/>
+  <path d="M540 145V136 M540 244V235 M486 190H495 M585 190H594 M502 152L508 158 M572 222L578 228 M502 228L508 222 M572 158L578 152" fill="none" stroke="#b98c44" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="540" y="275" class="word">étincelle</text>
+  <text x="540" y="305" class="meaning">火花</text>
+
+  <!-- Fire: the final name supplies the punchline. -->
+  <path d="M902 136C913 166 888 172 897 193C907 187 914 178 915 169C937 194 940 208 931 225C921 246 880 249 867 226C853 202 873 186 876 166C884 174 885 183 884 190C897 173 895 158 902 136Z" fill="#d97757"/>
+  <path d="M900 196C901 211 887 215 890 229C893 242 911 242 916 229C921 216 910 211 910 205C908 214 903 217 900 221C897 214 904 207 900 196Z" fill="#ffe0a1"/>
+  <text x="900" y="275" class="word">au feu !</text>
+  <text x="900" y="305" class="meaning">着火啦！</text>
+
+  <g fill="none" stroke="#ad5538" stroke-width="2.5" stroke-linecap="round">
+    <path d="M349 220H371 M360 209V231"/>
+    <path d="M709 214H731 M709 226H731"/>
+  </g>
+</svg>
