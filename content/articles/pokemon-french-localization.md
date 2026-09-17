@@ -4,7 +4,7 @@ date: 2025-11-07
 description: 从御三家到胖丁，聊聊第一代宝可梦的法语译名。
 lang: zh-CN
 category: 游戏本地化
-cover: assets/previews/pokemon-french-localization-artwork.png
+cover: assets/previews/pokemon-french-localization-artwork.webp
 coveralt: 一枚珊瑚红与米白色的纸雕精灵球，旁边是一枚蓝色对话气泡。
 ---
 

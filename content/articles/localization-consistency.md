@@ -4,7 +4,7 @@ date: 2026-09-15
 description: 奇幻 RPG · 中 → 英
 lang: zh-CN
 category: AI 翻译
-cover: assets/previews/ai-translation-consistency-artwork.png
+cover: assets/previews/ai-translation-consistency-artwork.webp
 coveralt: 两枚米白色和蓝色的纸雕对话气泡，中间用橙色等号连接。
 ---
 
