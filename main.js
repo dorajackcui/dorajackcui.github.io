@@ -23,3 +23,37 @@ if (location.hash === '#work') {
   history.replaceState(null, '', '#projects');
   document.querySelector('#projects').scrollIntoView();
 }
+
+// Animate each row once; hiding offscreen rows is only a JavaScript enhancement.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (!reducedMotion.matches && 'IntersectionObserver' in window && 'animate' in Element.prototype) {
+  const animations = new Set();
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      observer.unobserve(entry.target);
+      entry.target.classList.remove('motion-pending');
+      if (entry.target.contains(document.activeElement)) continue;
+      const animation = entry.target.animate(
+        [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 800, easing: 'cubic-bezier(.2, .65, .3, 1)' }
+      );
+      animations.add(animation);
+      animation.onfinish = animation.oncancel = () => animations.delete(animation);
+    }
+  }, { threshold: .12, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.project, .article-entry').forEach(row => {
+    if (row.getBoundingClientRect().top >= window.innerHeight) row.classList.add('motion-pending');
+    observer.observe(row);
+    row.addEventListener('focusin', () => {
+      observer.unobserve(row);
+      row.classList.remove('motion-pending');
+      row.getAnimations().forEach(animation => animation.cancel());
+    });
+  });
+  reducedMotion.addEventListener('change', () => {
+    observer.disconnect();
+    document.querySelectorAll('.motion-pending').forEach(row => row.classList.remove('motion-pending'));
+    animations.forEach(animation => animation.cancel());
+  }, { once: true });
+}

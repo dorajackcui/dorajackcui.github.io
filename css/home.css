@@ -46,9 +46,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #2383e2; outline-offs
 .project-link { display: inline-flex; align-items: center; gap: 17px; font-size: 14px; font-weight: 500; padding-bottom: 5px; border-bottom: 1px solid #b6b6ac; }
 .project-link:hover { border-color: var(--ink); }
 .project-link > span:last-child { color: #79796e; }
-.project-preview { display: block; border-radius: 8px; outline-offset: 5px; }
-.project-preview > img { width: 100%; height: auto; display: block; border-radius: 8px; transition: opacity .15s; }
-.project-preview:hover > img { opacity: .92; }
+.project-preview { display: block; overflow: hidden; border-radius: 8px; outline-offset: 5px; }
+.project-preview > img { width: 100%; height: auto; display: block; border-radius: 8px; }
 .site-footer { border-top: 1px solid var(--line); padding: 28px 0 34px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #85857b; margin-top: 16px; }
 .site-footer > div { display: flex; align-items: center; gap: 25px; }
 .site-footer a:hover { color: var(--ink); }
@@ -95,4 +94,19 @@ a:focus-visible, button:focus-visible { outline: 2px solid #2383e2; outline-offs
   .article-entry h3 { font-size: 24px; }
   .article-entry.has-cover p { max-width: 400px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 { animation: hero-enter 850ms cubic-bezier(.2, .65, .3, 1) 100ms both; }
+  .hero > p { animation: hero-enter 850ms cubic-bezier(.2, .65, .3, 1) 240ms both; }
+  .motion-pending { opacity: 0; }
+  .site-header nav a, .project-link, .site-footer a { transition: color 200ms ease, border-color 200ms ease; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-preview > img { transition: transform 550ms cubic-bezier(.22, 1, .36, 1); }
+  .project-preview:hover > img { transform: scale(1.015); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+@media print { .motion-pending { opacity: 1; } }
